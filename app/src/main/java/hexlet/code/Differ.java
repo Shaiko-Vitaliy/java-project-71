@@ -4,15 +4,32 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Differ {
-    public static Map<String, Object> map1 = new HashMap<>();
-    public static ObjectMapper objectMapper = new ObjectMapper();
-    public static String result = "";
-    public static Map<String, Object> makesFromJsonToMap(File filepatch) throws IOException {
+
+    public static String generate (String firstFilePatch, String secondFilePatch, String format) throws IOException{
+        Map<String, Object> mapFromFirstFile = makesFromJsonToMap(firstFilePatch);
+        Map<String, Object> mapFromSecondFile = makesFromJsonToMap(secondFilePatch);
+        var resultCompareMaps = comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
+        var arrayFromLine = resultCompareMaps.split("\n");
+        var arraySort = sort(arrayFromLine);
+        StringBuilder builder = new StringBuilder("");
+        for (var i = 0; i < arraySort.length; i++) {
+            builder.append(arraySort[i] + "\n");
+        }
+        return builder.toString();
+    }
+
+    private static Map<String, Object> makesFromJsonToMap(String filepatch) throws IOException {
+        Map<String, Object> map = new HashMap<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        var result ="";
+        File file = new File(filepatch);
         try (BufferedReader br = new BufferedReader(new FileReader(filepatch))) {
             String s;
             StringBuilder resBuilder = new StringBuilder(result);
@@ -23,14 +40,12 @@ public class Differ {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        map1 = objectMapper.readValue(result, new TypeReference<Map<String,Object>>(){});
-        result = "";
-        return map1;
+        map = objectMapper.readValue(result, new TypeReference<Map<String,Object>>(){});
+        return map;
     }
-    public static String generate(Map<String, Object> map1, Map<String, Object> map2) {
+    private static String comparesTwoMaps(Map<String, Object> map1, Map<String, Object> map2) {
         var result ="";
         StringBuilder builder = new StringBuilder(result);
-        StringBuilder builderTemp = new StringBuilder(result);
         for (Map.Entry<String, Object> item : map1.entrySet()) {
             if (!map2.containsKey(item.getKey())) {
                 builder.append("- " + item.getKey() + ":" + " " + item.getValue() + "\n");
@@ -50,19 +65,10 @@ public class Differ {
                 builder.append("+ " + item2.getKey() + ":" + " " + item2.getValue() + "\n");
             }
         }
-        String temp = builder.toString();
-        String[] tempArray = sort(creatingAnArray(temp));
-        for (var i = 0; i < tempArray.length; i++) {
-            builderTemp.append(tempArray[i] + "\n");
-        }
-        return builderTemp.toString();
+        return builder.toString();
     }
 
-    public static String[] creatingAnArray (String str) {
-        String[] arr = str.split("\n");
-        return arr;
-    }
-    public static String[] sort(String[] arr) {
+    private static String[] sort(String[] arr) {
         String temp = "";
         boolean neddIteration = true;
         while (neddIteration) {
