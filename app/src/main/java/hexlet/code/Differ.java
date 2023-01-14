@@ -17,10 +17,13 @@ public class Differ {
         Map<String, Object> mapFromSecondFile = makesFromJsonToMap(secondFilePatch);
         var resultCompareMaps = comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
         var arrayFromLine = resultCompareMaps.split("\n");
+       // System.out.println(Arrays.toString(arrayFromLine));
+        //Arrays.sort(arrayFromLine);
         var arraySort = sort(arrayFromLine);
         StringBuilder builder = new StringBuilder("");
         for (var i = 0; i < arraySort.length; i++) {
             builder.append(arraySort[i] + "\n");
+            //builder.append(arrayFromLine[i] + "\n");
         }
         return builder.toString();
     }

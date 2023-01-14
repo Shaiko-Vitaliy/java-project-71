@@ -25,7 +25,7 @@ private String firstFilePatch;
 private String secondFilePatch;
 
     @Override
-    public final Integer call() throws Exception {
+    public final Integer call() {
         try {
             var diff = Differ.generate(firstFilePatch, secondFilePatch, format);
             System.out.println(diff);
@@ -34,7 +34,7 @@ private String secondFilePatch;
             return ERROR_EXIT_CODE;
         }
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
