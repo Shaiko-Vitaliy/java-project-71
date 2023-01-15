@@ -5,7 +5,6 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.io.IOException;
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 0.1",
@@ -13,16 +12,16 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
     private static final int SUCCESSFUL_EXIT_CODE = 0;
     private static final int ERROR_EXIT_CODE = 1;
-@Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
-String format;
-@Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
-private boolean usageHelpRequested;
-@Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
-private boolean versionInfoRequested;
-@Parameters(index = "0", description = "path to first file")
-private String firstFilePatch;
-@Parameters(index = "1", description = "path to second file")
-private String secondFilePatch;
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
+   private String format;
+    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
+    private boolean usageHelpRequested;
+    @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
+    private boolean versionInfoRequested;
+    @Parameters(index = "0", description = "path to first file")
+    private String firstFilePatch;
+    @Parameters(index = "1", description = "path to second file")
+    private String secondFilePatch;
 
     @Override
     public final Integer call() {

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
 
 group 'hexlet.code'
@@ -28,6 +29,10 @@ dependencies {
     implementation 'info.picocli:picocli:4.7.0'
     annotationProcessor 'info.picocli:picocli-codegen:4.7.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+}
+
+run {
+    standardInput = System.in
 }
 
 test {
