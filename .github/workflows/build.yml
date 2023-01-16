@@ -27,5 +27,5 @@ jobs:
           CC_TEST_REPORTER_ID: ea16dec98c15f23a50cbae9be539cd3d380b90f4664f56f9b1baabbeecbf214c
           JACOCO_SOURCE_PATH: app/src/main/java
         with:
-          coverageCommand: make reported
+          coverageCommand: make report
           coverageLocations: ${{ github.workspace }}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
