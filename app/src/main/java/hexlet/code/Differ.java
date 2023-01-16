@@ -82,24 +82,20 @@ public class Differ {
 
     private static String makeFromArraystoString(String[] array) {
         StringBuilder builder = new StringBuilder("");
-        for (var i = 0; i < array.length; i++) {
-            if (i == 0) {
-                builder.append("{\n")
-                        .append("  ")
-                        .append(array[i])
-                        .append("\n");
-            }
+        builder.append("{\n")
+                .append("  ")
+                .append(array[0])
+                .append("\n");
+        for (var i = 1; i < array.length - 1; i++) {
             if (i < array.length - 1 && i > 0) {
                 builder.append("  ")
                         .append(array[i])
                         .append("\n");
             }
-            if (i == array.length - 1) {
-                builder.append("  ")
-                        .append(array[i]).append("\n")
-                        .append("}");
-            }
         }
+        builder.append("  ")
+                .append(array[array.length - 1]).append("\n")
+                .append("}");
         return builder.toString();
     }
 }
