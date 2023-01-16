@@ -3,7 +3,7 @@ run-dist :
 build:
 	./gradlew build
 
-reported:
+report:
 	./gradlew jacocoTestReport
 
 .PHONY: build
