@@ -4,10 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Differ {
@@ -16,39 +14,15 @@ public class Differ {
         Map<String, Object> mapFromFirstFile = makesFromJsonToMap(firstFilePatch);
         Map<String, Object> mapFromSecondFile = makesFromJsonToMap(secondFilePatch);
         var resultCompareMaps = comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
-        //System.out.println(resultCompareMaps);
         var arrayFromLine = resultCompareMaps.split("\n");
-       //System.out.println(Arrays.toString(arrayFromLine));
-        //Arrays.sort(arrayFromLine);
         var arraySort = sort(arrayFromLine);
-        StringBuilder builder = new StringBuilder("");
-        for (var i = 0; i < arraySort.length; i++) {
-            if (i == 0) {
-                builder.append("{\n")
-                        .append("  ")
-                        .append(arraySort[i])
-                        .append("\n");
-            }
-            if (i < arraySort.length - 1 && i > 0) {
-                builder.append("  ")
-                        .append(arraySort[i])
-                        .append("\n");
-            }
-            if (i == arraySort.length - 1) {
-                builder.append("  ")
-                        .append(arraySort[i]).append("\n")
-                        .append("}");
-            }
-            //builder.append(arrayFromLine[i] + "\n");
-        }
-        return builder.toString();
+        return makeFromArraystoString(arraySort);
     }
 
     private static Map<String, Object> makesFromJsonToMap(String filepatch) throws IOException {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map;
         ObjectMapper objectMapper = new ObjectMapper();
         var result = "";
-        File file = new File(filepatch);
         try (BufferedReader br = new BufferedReader(new FileReader(filepatch))) {
             String s;
             StringBuilder resBuilder = new StringBuilder(result);
@@ -104,5 +78,28 @@ public class Differ {
         }
         temp = "";
         return arr;
+    }
+
+    private static String makeFromArraystoString(String[] array) {
+        StringBuilder builder = new StringBuilder("");
+        for (var i = 0; i < array.length; i++) {
+            if (i == 0) {
+                builder.append("{\n")
+                        .append("  ")
+                        .append(array[i])
+                        .append("\n");
+            }
+            if (i < array.length - 1 && i > 0) {
+                builder.append("  ")
+                        .append(array[i])
+                        .append("\n");
+            }
+            if (i == array.length - 1) {
+                builder.append("  ")
+                        .append(array[i]).append("\n")
+                        .append("}");
+            }
+        }
+        return builder.toString();
     }
 }

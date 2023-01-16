@@ -2,10 +2,10 @@ package hexlet.code;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DifferTest {
@@ -13,6 +13,7 @@ class DifferTest {
     private static String firstFilePatch;
     private static String secondFilePatch;
     private static String expectedFileComprasion;
+    private static Map<String, Object> expectedMapFromJsonFirstFile = new HashMap<>();
     @BeforeAll
     public static void beforeAll() {
         resourcesPatch = new File("src/test/resources").getAbsolutePath();
@@ -32,8 +33,6 @@ class DifferTest {
                   + timeout: 20
                   + verbose: true
                 }""";
-        System.out.println(expectedFileComprasion);
-
     }
     @Test
     public void generateTest() throws IOException {
