@@ -43,6 +43,9 @@ test {
 
 jacocoTestReport {
     dependsOn test
+}
+
+jacocoTestReport {
     reports {
         xml.required = true
     }
