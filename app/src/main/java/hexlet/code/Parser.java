@@ -16,10 +16,13 @@ public class Parser {
     public static Map<String, Object> parsingFile(String filePatch) throws Exception {
         Map<String, Object> map;
         var lineFromFile = Files.readString(Paths.get(filePatch));
+        //System.out.println(lineFromFile);
         String formatInputFile = givesFormatInputFile(filePatch);
+       // System.out.println(formatInputFile);
         switch (formatInputFile) {
             case "json" -> {
                 map = makesFromJsonToMap(lineFromFile);
+               // System.out.println(map.toString());
                 return map;
             }
             case "yml" -> {

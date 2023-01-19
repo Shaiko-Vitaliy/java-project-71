@@ -22,7 +22,7 @@ class DifferTest {
         secondFilePatchYaml = resourcesPatch + "/yaml/secondFile.yml";
         expectedFileComprasion = """
                 {
-                    date: 2023
+                    date: 1
                   - follow: false
                   - host: shaiko.com
                   + host: hexlet.io
@@ -30,13 +30,13 @@ class DifferTest {
                   - name: Cris
                   + name: Stenli
                   - proxy: 123.234.53.22
-                  - timeout: 50
-                  + timeout: 20
+                  - timeout: 0
+                  + timeout: 1
                   + verbose: true
                 }""";
-        expectedMapFromFirstFile = Map.of("host", "shaiko.com", "timeout", 50,
+        expectedMapFromFirstFile = Map.of("host", "shaiko.com", "timeout", 0,
                 "proxy", "123.234.53.22", "follow", false,
-                "name", "Cris", "date", 2023);
+                "name", "Cris", "date", 1);
 
     }
     @Test

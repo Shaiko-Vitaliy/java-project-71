@@ -17,6 +17,7 @@ public class Differ {
             return "Не удалось сравнить файлы";
         }
         var resultCompareMaps = comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
+        //System.out.println(resultCompareMaps);
         var arrayFromLine = resultCompareMaps.split("\n");
         var arraySort = sort(arrayFromLine);
         return makeFromArraystoString(arraySort);
@@ -25,6 +26,8 @@ public class Differ {
     private static String comparesTwoMaps(Map<String, Object> map1, Map<String, Object> map2) {
         var result = "";
         StringBuilder builder = new StringBuilder(result);
+        //System.out.println(map1.toString());
+        //System.out.println(map2.toString());
         for (Map.Entry<String, Object> item : map1.entrySet()) {
             if (!map2.containsKey(item.getKey())) {
                 builder.append("- " + item.getKey() + ":" + " " + item.getValue() + "\n");

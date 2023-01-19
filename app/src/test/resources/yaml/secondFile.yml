@@ -1,6 +1,6 @@
-timeout: 20
+timeout: 1
 verbose: true
 host: hexlet.io
 name: Stenli
 id: 456
-date: 2023
+date: 1
