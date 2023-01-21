@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import java.util.Map;
+import java.util.*;
 
 public class Differ {
 
@@ -16,38 +16,43 @@ public class Differ {
         if (mapFromSecondFile.isEmpty() && mapFromFirstFile.isEmpty()) {
             return "Не удалось сравнить файлы";
         }
-        var resultCompareMaps = comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
-        //System.out.println(resultCompareMaps);
+        var resultCompareMaps = Utils.comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
         var arrayFromLine = resultCompareMaps.split("\n");
         var arraySort = sort(arrayFromLine);
         return makeFromArraystoString(arraySort);
     }
 
-    private static String comparesTwoMaps(Map<String, Object> map1, Map<String, Object> map2) {
+    private static String comparesTwoMaps(Map<String, Object> map1, Map<String, Object> map2) throws Exception {
         var result = "";
         StringBuilder builder = new StringBuilder(result);
         //System.out.println(map1.toString());
         //System.out.println(map2.toString());
+        TreeMap<String, Object> sortedMap = new TreeMap<>();
+        sortedMap.putAll(map1);
+        sortedMap.putAll(map2);
+        //System.out.println(sortedMap.lastEntry());
+        System.out.println(sortedMap.toString());
         for (Map.Entry<String, Object> item : map1.entrySet()) {
-            if (!map2.containsKey(item.getKey())) {
+               var valueMap1 = map1.get(item.getKey());
+               var valueMap2 = map2.get(item.getKey());
+            if (!map1.containsKey(item.getKey()) && map2.containsKey(item.getKey())) {
+                builder.append("+ " + item.getKey() + ":" + " " + item.getValue() + "\n");
+            } else {
                 builder.append("- " + item.getKey() + ":" + " " + item.getValue() + "\n");
             }
-            if (map2.containsKey(item.getKey())) {
-                if (!map2.containsValue(item.getValue())) {
-                    builder.append("- " + item.getKey() + ":" + " " + item.getValue() + "\n");
-                    builder.append("+ " + item.getKey() + ":" + " " + map2.get(item.getKey()) + "\n");
-                }
-                if (map2.containsValue(item.getValue())) {
-                    builder.append("  " + item.getKey() + ":" + " " + item.getValue() + "\n");
-                }
+            if  (map2.containsKey(item.getKey()) && map1.containsKey(item.getKey())) {
+
             }
+
         }
         for (Map.Entry<String, Object> item2 : map2.entrySet()) {
             if (!map1.containsKey(item2.getKey())) {
                 builder.append("+ " + item2.getKey() + ":" + " " + item2.getValue() + "\n");
             }
         }
-        return builder.toString();
+        String res = builder.toString();
+       //System.out.println(res);
+        return res;
     }
 
     private static String[] sort(String[] arr) {

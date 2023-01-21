@@ -5,12 +5,12 @@
   "key2": "value2",
   "numbers1": [1, 2, 3, 4],
   "numbers2": [22, 33, 44, 55],
-  "id": null,
+  "id": "dgnndfnxnghfmngcbv fgcnfgcbvfcgvn dgcvnfvhbn cfgc fvbnfvhbn vhb bhmhmnbdgcvnfvhb mfhgvcbdfxcvnmhjbhvnfgc fgcbnfgcnfvcnbvfhnbgvhnbfggcvnfvnfvhn cgfbcgfnfgcmnfhnfgbnfgngfvhnfhcndgxfcnhghmfdtjhfgerthjkjk,hgfmjdhsg1",
   "default": ["value1", "value2"],
   "checked": true,
   "numbers4": [4, 5, 6],
   "chars1": ["a", "b", "c"],
-  "chars2": false,
+  "chars2": null,
   "obj1": {
     "nestedKey": "value",
     "isNested": true
