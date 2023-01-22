@@ -10,3 +10,6 @@
 ### Description
 At the stage #7 Differ is an application that compares two *flat* json and yaml files and output their difference.
 [![asciicast](https://asciinema.org/a/STFkGNJmQaSNODJvkElp5lzXZ.svg)](https://asciinema.org/a/STFkGNJmQaSNODJvkElp5lzXZ)
+### Description
+At the stage #8 Differ is an application that compares two with nested data json and yaml files and output their difference in format Sylish.
+[![asciicast](https://asciinema.org/a/5KaJwaSWc1rBqjogAHbj6m6Zh.svg)](https://asciinema.org/a/5KaJwaSWc1rBqjogAHbj6m6Zh)
