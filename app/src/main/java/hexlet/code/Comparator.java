@@ -20,28 +20,31 @@ public class Comparator {
             var valueMap1 = map1.get(item.getKey());
             var valueMap2 = map2.get(item.getKey());
             if (!map2.containsKey(item.getKey())) {
-                HashMap<String, Object> temp = new HashMap<>();
-                temp.put(del, valueMap1);
-                resultCompare.put(item.getKey(), temp);
+                resultCompare.put(item.getKey(), getHashMap(del, valueMap1));
             } else if (!map1.containsKey(item.getKey())) {
-                HashMap<String, Object> temp = new HashMap<>();
-                temp.put(add, valueMap2);
-                resultCompare.put(item.getKey(), temp);
+                resultCompare.put(item.getKey(), getHashMap(add, valueMap2));
             } else {
                 if (Objects.equals(valueMap1, valueMap2)) {
-                    HashMap<String, Object> temp = new HashMap<>();
-                    temp.put(notMod, item.getValue());
-                    resultCompare.put(item.getKey(), temp);
+                    resultCompare.put(item.getKey(), getHashMap(notMod, item.getValue()));
                 } else {
-                    HashMap<String, Object> temp = new HashMap<>();
-                    temp.put(modOld, valueMap1);
-                    temp.put(modNew, valueMap2);
-                    resultCompare.put(item.getKey(), temp);
+                    resultCompare.put(item.getKey(), getHashMap(modOld, valueMap1, modNew, valueMap2));
                 }
-
             }
         }
         return resultCompare;
+    }
+
+    private static HashMap<String, Object> getHashMap(String key, Object val) {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put(key, val);
+        return result;
+    }
+
+    private static HashMap<String, Object> getHashMap(String key1, Object val1, String key2, Object val2) {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put(key1, val1);
+        result.put(key2, val2);
+        return result;
     }
 }
 
