@@ -4,8 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +11,11 @@ public class Parser {
 
 
 
-    public static Map<String, Object> parsingFile(String filePatch) throws Exception {
+    public static Map<String, Object> parsingFile(String lineFromFile, String formatInputFile) throws Exception {
         Map<String, Object> map;
-        var lineFromFile = Files.readString(Paths.get(filePatch));
-        //System.out.println(lineFromFile);
-        String formatInputFile = givesFormatInputFile(filePatch);
-       // System.out.println(formatInputFile);
         switch (formatInputFile) {
             case "json" -> {
                 map = makesFromJsonToMap(lineFromFile);
-               // System.out.println(map.toString());
                 return map;
             }
             case "yml" -> {
@@ -50,13 +43,5 @@ public class Parser {
         ObjectMapper mapper = new YAMLMapper();
         map = mapper.readValue(line, HashMap.class);
         return map;
-    }
-
-    private static String givesFormatInputFile(String filePatch) {
-        if (!filePatch.contains(".")) {
-            return "";
-        }
-        var indexOfSeparator = filePatch.lastIndexOf(".");
-        return filePatch.substring(indexOfSeparator + 1);
     }
 }
