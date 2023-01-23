@@ -18,7 +18,7 @@ public class FormatTest {
     private static Map<String, HashMap<String, Object>> map;
     private static String expectedStylishTxt;
     private static String expectedPlainTxt;
-    private final static TreeMap<String, Object> treeMap = new TreeMap<>();
+    private static final TreeMap<String, Object> TREE_MAP = new TreeMap<>();
 
     @BeforeAll
     public static void beforeAll() throws Exception {
@@ -35,9 +35,9 @@ public class FormatTest {
 
         var map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
         var map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        treeMap.putAll(map1);
-        treeMap.putAll(map2);
-        map = Comparator.comparesTwoMaps(map1, map2, treeMap);
+        TREE_MAP.putAll(map1);
+        TREE_MAP.putAll(map2);
+        map = Comparator.comparesTwoMaps(map1, map2, TREE_MAP);
     }
 
     @Test

@@ -28,14 +28,14 @@ public class Plain {
                 }
             }
         }
-        builder.delete(builder.length() - 1,builder.length());
+        builder.delete(builder.length() - 1, builder.length());
         return builder.toString();
     }
 
     private static Object checksForCompositeData(Object data) throws NullPointerException {
         if (data == null) {
             return "null";
-        } else if (data instanceof Collection<?> || data instanceof Map<?,?>) {
+        } else if (data instanceof Collection<?> || data instanceof Map<?, ?>) {
             return "[complex value]";
         } else if (data instanceof String) {
             return "'" + data + "'";
