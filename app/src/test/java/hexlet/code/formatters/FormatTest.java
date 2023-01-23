@@ -17,21 +17,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FormatTest {
     private static Map<String, HashMap<String, Object>> map;
     private static String expectedStylishTxt;
-    private static TreeMap<String, Object> treeMap = new TreeMap<>();
+    private static String expectedPlainTxt;
+    private final static TreeMap<String, Object> treeMap = new TreeMap<>();
 
     @BeforeAll
-    private static void beforeAll() throws Exception {
-        String resourcesPatch = new File("src/test/resources").getAbsolutePath();
-        String expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
-        String firstFilePatchJson = resourcesPatch + "/json/firstFile.json";
-        String secondFilePatchJson = resourcesPatch + "/json/secondFile.json";
+    public static void beforeAll() throws Exception {
+        var resourcesPatch = new File("src/test/resources").getAbsolutePath();
+        var expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
+        var expectedPlainTxtFormatFilePatchTxt = resourcesPatch + "/resultPlainFormatExpected.txt";
+        var firstFilePatchJson = resourcesPatch + "/json/firstFile.json";
+        var secondFilePatchJson = resourcesPatch + "/json/secondFile.json";
 
-        String lineFromFirstFileJson = Files.readString(Paths.get(firstFilePatchJson));
-        String lineFromSecondFileJson = Files.readString(Paths.get(secondFilePatchJson));
+        var lineFromFirstFileJson = Files.readString(Paths.get(firstFilePatchJson));
+        var lineFromSecondFileJson = Files.readString(Paths.get(secondFilePatchJson));
         expectedStylishTxt = Files.readString(Paths.get(expectedStylishFormatFilePatchTxt));
+        expectedPlainTxt = Files.readString(Paths.get(expectedPlainTxtFormatFilePatchTxt));
 
-        Map<String, Object> map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
-        Map<String, Object> map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
+        var map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
+        var map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
         treeMap.putAll(map1);
         treeMap.putAll(map2);
         map = Comparator.comparesTwoMaps(map1, map2, treeMap);
@@ -40,8 +43,12 @@ public class FormatTest {
     @Test
     public void getResultInOutFormatTest() {
         String formatStylish = "stylish";
+        String formatPlain = "plain";
         var actualOutPutStylish = Format.getResultInOutFormat(map, formatStylish);
+        var actualOutPutPlain = Format.getResultInOutFormat(map, formatPlain);
         assertEquals(expectedStylishTxt, actualOutPutStylish, "Format.getResultInOutFormat() "
                 + "не получилось вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
+        assertEquals(expectedPlainTxt, actualOutPutPlain, "Format.getResultInOutFormat() "
+                + "не получилось вывести результат в формате \"plain\" или результат не совпал с ожидаемым");
     }
 }

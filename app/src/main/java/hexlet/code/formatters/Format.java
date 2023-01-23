@@ -9,6 +9,9 @@ public class Format {
             case "stylish" -> {
                 return Stylish.makeFromStylish(map);
             }
+            case "plain" -> {
+                return Plain.makeFromPlain(map);
+            }
             default -> {
                 return "Введен не верный формат выходных данных";
             }
