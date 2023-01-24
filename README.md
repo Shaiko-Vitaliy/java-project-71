@@ -17,3 +17,6 @@ At the stage #8 Differ is an application that compares two with nested data json
 ### Description
 At the stage #8 Differ is an application that compares two with nested data json and yaml files and output their difference in format Plain.
 [![asciicast](https://asciinema.org/a/xmTbxtQbv5AX4I8IDynM4XPAo.svg)](https://asciinema.org/a/xmTbxtQbv5AX4I8IDynM4XPAo)
+### Description
+At the stage #9 Differ is an application that compares two with nested data json and yaml files and output their difference in format Json.
+[![asciicast](https://asciinema.org/a/emw0LL4j9OjqoO0nfhpeiknJq.svg)](https://asciinema.org/a/emw0LL4j9OjqoO0nfhpeiknJq)
