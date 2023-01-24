@@ -1,18 +1,17 @@
 package hexlet.code;
 
 import hexlet.code.formatters.Format;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Differ {
-
     public static String generate(String firstFilePatch, String secondFilePatch, String format) throws Exception {
         var lineFromFirstFile = Files.readString(Paths.get(firstFilePatch));
-        var formatInputFirstFile = givesFormatInputFile(firstFilePatch);
         var lineFromSecondFile = Files.readString(Paths.get(secondFilePatch));
+
+        var formatInputFirstFile = givesFormatInputFile(firstFilePatch);
         var formatInputSecondFile = givesFormatInputFile(secondFilePatch);
 
         var mapFromFirstFile = Parser.parsingFile(lineFromFirstFile, formatInputFirstFile);
@@ -20,7 +19,7 @@ public class Differ {
 
         displaysMessage(mapFromFirstFile, mapFromSecondFile);
 
-        TreeMap<String, Object> sortedMap = makeTreeMap(mapFromFirstFile, mapFromSecondFile);
+        var sortedMap = makeTreeMap(mapFromFirstFile, mapFromSecondFile);
         var resultCompareMaps = Comparator.comparesTwoMaps(mapFromFirstFile, mapFromSecondFile, sortedMap);
         return Format.getResultInOutFormat(resultCompareMaps, format);
     }

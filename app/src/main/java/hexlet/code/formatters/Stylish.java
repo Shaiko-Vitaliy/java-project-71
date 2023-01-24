@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Stylish {
-
     public static String makeFromStylish(Map<String, HashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         builder.append("{\n");
@@ -15,7 +14,7 @@ public class Stylish {
                         builder.append("  ").append("+ ").append(item.getKey()).append(": ")
                                 .append(val.getValue().toString()).append("\n");
                     }
-                    case "delet" -> {
+                    case "delete" -> {
                         builder.append("  ").append("- ").append(item.getKey()).append(": ")
                                 .append(val.getValue().toString()).append("\n");
                     }
@@ -23,13 +22,13 @@ public class Stylish {
                         builder.append("  ").append("  ").append(item.getKey()).append(": ")
                                 .append(val.getValue().toString()).append("\n");
                     }
-                    case "Old modified" -> {
+                    case "Old value" -> {
                         builder.append("  ").append("- ").append(item.getKey()).append(": ")
-                                .append(item.getValue().get("Old modified")).append("\n");
+                                .append(item.getValue().get("Old value")).append("\n");
                         builder.append("  ").append("+ ").append(item.getKey()).append(": ")
-                                .append(item.getValue().get("New modified")).append("\n");
+                                .append(item.getValue().get("New value")).append("\n");
                     }
-                    case "New modified" -> {
+                    case "New value" -> {
                     }
                     default -> {
                         builder.append("  ").append("not recognized ").append(item.getKey());

@@ -1,30 +1,15 @@
 chars1{not modified=[a, b, c]}
-chars2{New modified=false, Old modified=[d, e, f]}
-checked{New modified=true, Old modified=false}
-default{New modified=[value1, value2], Old modified=null}
-id{New modified=null, Old modified=1}
-key1{delet=value1}
+chars2{Old value=[d, e, f], New value=false}
+checked{Old value=false, New value=true}
+default{Old value=null, New value=[value1, value2]}
+id{Old value=1, New value=null}
+key1{delete=value1}
 key2{added=value2}
 numbers1{not modified=[1, 2, 3, 4]}
-numbers2{New modified=[22, 33, 44, 55], Old modified=[2, 3, 4, 5]}
-numbers3{delet=[3, 4, 5]}
+numbers2{Old value=[2, 3, 4, 5], New value=[22, 33, 44, 55]}
+numbers3{delete=[3, 4, 5]}
 numbers4{added=[4, 5, 6]}
 obj1{not modified={nestedKey=value, isNested=true}}
-setting1{New modified=Another value, Old modified=Some value}
-setting2{New modified=1, Old modified=0}
-setting3{New modified=none, Old modified=true}
-chars1{not modified=[a, b, c]}
-chars2{New modified=false, Old modified=[d, e, f]}
-checked{New modified=true, Old modified=false}
-default{New modified=[value1, value2], Old modified=null}
-id{New modified=null, Old modified=1}
-key1{delet=value1}
-key2{added=value2}
-numbers1{not modified=[1, 2, 3, 4]}
-numbers2{New modified=[22, 33, 44, 55], Old modified=[2, 3, 4, 5]}
-numbers3{delet=[3, 4, 5]}
-numbers4{added=[4, 5, 6]}
-obj1{not modified={nestedKey=value, isNested=true}}
-setting1{New modified=Another value, Old modified=Some value}
-setting2{New modified=1, Old modified=0}
-setting3{New modified=none, Old modified=true}
+setting1{Old value=Some value, New value=Another value}
+setting2{Old value=0, New value=1}
+setting3{Old value=true, New value=none}

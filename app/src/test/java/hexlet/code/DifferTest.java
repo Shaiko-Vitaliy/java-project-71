@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DifferTest {
@@ -17,18 +16,18 @@ class DifferTest {
     private static String resultStylishFormatExpected;
     @BeforeAll
     public static void beforeAll() throws IOException {
-        String resourcesPatch = new File("src/test/resources").getAbsolutePath();
+        var resourcesPatch = new File("src/test/resources").getAbsolutePath();
         firstFilePatchJson = resourcesPatch + "/json/firstFile.json";
         secondFilePatchJson = resourcesPatch + "/json/secondFile.json";
         firstFilePatchYaml = resourcesPatch + "/yaml/firstFile.yml";
         secondFilePatchYaml = resourcesPatch + "/yaml/secondFile.yml";
-        String expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
+        var expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
         resultStylishFormatExpected = Files.readString(Paths.get(expectedStylishFormatFilePatchTxt));
     }
 
     @Test
     public void generateFormJsonTest() throws Exception {
-        String actualResult = Differ.generate(firstFilePatchJson, secondFilePatchJson, "stylish");
+        var actualResult = Differ.generate(firstFilePatchJson, secondFilePatchJson, "stylish");
         assertEquals(resultStylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
                  + " два файла JSON и вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
 

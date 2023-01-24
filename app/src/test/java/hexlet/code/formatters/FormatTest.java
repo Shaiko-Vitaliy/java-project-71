@@ -4,20 +4,20 @@ import hexlet.code.Comparator;
 import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FormatTest {
     private static Map<String, HashMap<String, Object>> map;
     private static String expectedStylishTxt;
     private static String expectedPlainTxt;
+    private static String expectedJsonTxt;
     private static final TreeMap<String, Object> TREE_MAP = new TreeMap<>();
 
     @BeforeAll
@@ -25,6 +25,8 @@ public class FormatTest {
         var resourcesPatch = new File("src/test/resources").getAbsolutePath();
         var expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
         var expectedPlainTxtFormatFilePatchTxt = resourcesPatch + "/resultPlainFormatExpected.txt";
+        var expectedJsonTxtFormatFilePatchTxt = resourcesPatch + "/resultJsonFormatExpected.txt";
+
         var firstFilePatchJson = resourcesPatch + "/json/firstFile.json";
         var secondFilePatchJson = resourcesPatch + "/json/secondFile.json";
 
@@ -32,6 +34,7 @@ public class FormatTest {
         var lineFromSecondFileJson = Files.readString(Paths.get(secondFilePatchJson));
         expectedStylishTxt = Files.readString(Paths.get(expectedStylishFormatFilePatchTxt));
         expectedPlainTxt = Files.readString(Paths.get(expectedPlainTxtFormatFilePatchTxt));
+        expectedJsonTxt = Files.readString(Paths.get(expectedJsonTxtFormatFilePatchTxt));
 
         var map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
         var map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
@@ -41,14 +44,18 @@ public class FormatTest {
     }
 
     @Test
-    public void getResultInOutFormatTest() {
-        String formatStylish = "stylish";
-        String formatPlain = "plain";
+    public void getResultInOutFormatTest() throws IOException {
+        var formatStylish = "stylish";
+        var formatPlain = "plain";
+        var formatJson = "json";
         var actualOutPutStylish = Format.getResultInOutFormat(map, formatStylish);
         var actualOutPutPlain = Format.getResultInOutFormat(map, formatPlain);
+        var actualOutPutJson = Format.getResultInOutFormat(map, formatJson);
         assertEquals(expectedStylishTxt, actualOutPutStylish, "Format.getResultInOutFormat() "
                 + "не получилось вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
         assertEquals(expectedPlainTxt, actualOutPutPlain, "Format.getResultInOutFormat() "
                 + "не получилось вывести результат в формате \"plain\" или результат не совпал с ожидаемым");
+        assertEquals(expectedJsonTxt, actualOutPutJson, "Format.getResultInOutFormat() "
+                + "не получилось вывести результат в формате \"json\" или результат не совпал с ожидаемым");
     }
 }

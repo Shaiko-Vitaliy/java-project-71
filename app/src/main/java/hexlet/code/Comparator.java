@@ -6,14 +6,13 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 public class Comparator {
-
     public static Map<String, HashMap<String, Object>> comparesTwoMaps(Map<String, Object> map1,
                                                                        Map<String, Object> map2,
                                                                        TreeMap<String, Object> sortedMap) {
         var add = "added";
-        var del = "delet";
-        var modOld = "Old modified";
-        var modNew = "New modified";
+        var del = "delete";
+        var modOld = "Old value";
+        var modNew = "New value";
         var notMod = "not modified";
         Map<String, HashMap<String, Object>> resultCompare = new TreeMap<>();
         for (Map.Entry<String, Object> item : sortedMap.entrySet()) {

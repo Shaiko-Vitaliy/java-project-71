@@ -15,13 +15,13 @@ public class Plain {
                         builder.append("Property '").append(item.getKey()).append("' was added with value: ")
                                 .append(valueOfKey).append("\n");
                     }
-                    case "delet" -> {
+                    case "delete" -> {
                         builder.append("Property '").append(item.getKey()).append("' was removed").append("\n");
                     }
-                    case "Old modified" -> {
+                    case "Old value" -> {
                         builder.append("Property '").append(item.getKey()).append("' was updated. From ")
-                                .append(checksForCompositeData(item.getValue().get("Old modified"))).append(" to ")
-                                .append(checksForCompositeData(item.getValue().get("New modified"))).append("\n");
+                                .append(checksForCompositeData(item.getValue().get("Old value"))).append(" to ")
+                                .append(checksForCompositeData(item.getValue().get("New value"))).append("\n");
                     }
                     default -> {
                     }
