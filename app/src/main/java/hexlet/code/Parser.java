@@ -19,7 +19,7 @@ public class Parser {
                 return map;
             }
             default -> {
-                return new HashMap<>();
+                throw new IllegalArgumentException("Format valid");
             }
         }
     }
