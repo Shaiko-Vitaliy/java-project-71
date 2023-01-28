@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FormatTest {
@@ -18,7 +17,6 @@ public class FormatTest {
     private static String expectedStylishTxt;
     private static String expectedPlainTxt;
     private static String expectedJsonTxt;
-    private static final TreeMap<String, Object> TREE_MAP = new TreeMap<>();
 
     @BeforeAll
     public static void beforeAll() throws Exception {
@@ -38,9 +36,7 @@ public class FormatTest {
 
         var map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
         var map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        TREE_MAP.putAll(map1);
-        TREE_MAP.putAll(map2);
-        map = Comparator.comparesTwoMaps(map1, map2, TREE_MAP);
+        map = Comparator.comparesTwoMaps(map1, map2);
     }
 
     @Test

@@ -13,7 +13,9 @@ class DifferTest {
     private static String secondFilePatchJson;
     private static String firstFilePatchYaml;
     private static String secondFilePatchYaml;
-    private static String resultStylishFormatExpected;
+    private static String stylishFormatExpected;
+    private static String jsonFormatExpected;
+    private static String plainFormatExpected;
     @BeforeAll
     public static void beforeAll() throws IOException {
         var resourcesPatch = new File("src/test/resources").getAbsolutePath();
@@ -22,21 +24,39 @@ class DifferTest {
         firstFilePatchYaml = resourcesPatch + "/yaml/firstFile.yml";
         secondFilePatchYaml = resourcesPatch + "/yaml/secondFile.yml";
         var expectedStylishFormatFilePatchTxt = resourcesPatch + "/resultStylishFormatExpected.txt";
-        resultStylishFormatExpected = Files.readString(Paths.get(expectedStylishFormatFilePatchTxt));
+        var expectedJsonFormatFilePatchTxt = resourcesPatch + "/resultJsonFormatExpected.txt";
+        var expectedPlainFormatFilePatchTxt = resourcesPatch + "/resultPlainFormatExpected.txt";
+        stylishFormatExpected = Files.readString(Paths.get(expectedStylishFormatFilePatchTxt));
+        jsonFormatExpected = Files.readString(Paths.get(expectedJsonFormatFilePatchTxt));
+        plainFormatExpected = Files.readString(Paths.get(expectedPlainFormatFilePatchTxt));
     }
 
     @Test
-    public void generateFormJsonTest() throws Exception {
-        var actualResult = Differ.generate(firstFilePatchJson, secondFilePatchJson, "stylish");
-        assertEquals(resultStylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
+    public void generateFromJsonTest() throws Exception {
+        var actualResult = Differ.generate(firstFilePatchJson, secondFilePatchJson);
+        assertEquals(stylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
                  + " два файла JSON и вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
 
     }
 
     @Test
-    public void generateFormYamlTest() throws Exception {
+    public void generateFromYamlTest() throws Exception {
         String actualResult = Differ.generate(firstFilePatchYaml, secondFilePatchYaml, "stylish");
-        assertEquals(resultStylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
+        assertEquals(stylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
                 + " два файла YAML и вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
+    }
+
+    @Test
+    public void outFormatJsonTest() throws Exception {
+        String actualResult = Differ.generate(firstFilePatchYaml, secondFilePatchYaml, "json");
+        assertEquals(jsonFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
+                + " два файла JSON и вывести результат в формате \"json\" или результат не совпал с ожидаемым");
+    }
+
+    @Test
+    public void outFormatPlainTest() throws Exception {
+        String actualResult = Differ.generate(firstFilePatchYaml, secondFilePatchYaml, "plain");
+        assertEquals(plainFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
+                + " два файла JSON и вывести результат в формате \"plain\" или результат не совпал с ожидаемым");
     }
 }

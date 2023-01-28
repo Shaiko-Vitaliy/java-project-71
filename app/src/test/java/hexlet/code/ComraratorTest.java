@@ -8,11 +8,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComraratorTest {
-    private static final TreeMap<String, Object> TREE_MAP = new TreeMap<>();
     private static String expectedLineFromFilePatchTxt;
     private static Map<String, Object> map1;
     private static Map<String, Object> map2;
@@ -30,12 +28,10 @@ public class ComraratorTest {
 
         map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
         map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        TREE_MAP.putAll(map1);
-        TREE_MAP.putAll(map2);
     }
     @Test
     public void comparesTwoMapsTest() {
-        var actualCompareMaps = Comparator.comparesTwoMaps(map1, map2, TREE_MAP);
+        var actualCompareMaps = Comparator.comparesTwoMaps(map1, map2);
         var scan = new Scanner(expectedLineFromFilePatchTxt);
         for (Map.Entry<String, HashMap<String, Object>> item : actualCompareMaps.entrySet()) {
             assertEquals(scan.nextLine(), item.getKey() + item.getValue(),

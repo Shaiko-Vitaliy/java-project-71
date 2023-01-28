@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4560611-90f4-4681-8148-a735d5364f2f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/emptySecond.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/empyFirst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/car.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +50,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="app" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="app" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -121,27 +142,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.app [checkstyleTest]">
-    <configuration name="app [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="check" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="app [checkstyleMain]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -184,7 +184,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="app [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="app [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -195,7 +195,28 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="jacocoTestReport" />
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="app [installDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="installDist" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -230,9 +251,9 @@
       <list>
         <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [checkstyleMain]" />
+        <item itemvalue="Gradle.app [clean]" />
         <item itemvalue="Gradle.app [test]" />
-        <item itemvalue="Gradle.app [check]" />
-        <item itemvalue="Gradle.app [jacocoTestReport]" />
+        <item itemvalue="Gradle.app [installDist]" />
       </list>
     </recent_temporary>
   </component>

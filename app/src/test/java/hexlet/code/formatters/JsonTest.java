@@ -10,14 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JsonTest {
     private static String expectedJsonTxt;
     private static Map<String, HashMap<String, Object>> map;
-    private static final TreeMap<String, Object> TREE_MAP = new TreeMap<>();
 
     @BeforeAll
     public static void beforeAll() throws Exception {
@@ -32,9 +30,7 @@ public class JsonTest {
 
         Map<String, Object> map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
         Map<String, Object> map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        TREE_MAP.putAll(map1);
-        TREE_MAP.putAll(map2);
-        map = Comparator.comparesTwoMaps(map1, map2, TREE_MAP);
+        map = Comparator.comparesTwoMaps(map1, map2);
     }
     @Test
     public void makeFromStylishTest() throws IOException {

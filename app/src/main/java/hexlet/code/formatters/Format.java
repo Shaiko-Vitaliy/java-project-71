@@ -18,7 +18,7 @@ public class Format {
                 return Json.makeFromJson(map);
             }
             default -> {
-                return "Введен не верный формат выходных данных";
+                throw new IllegalArgumentException("Out format valid");
             }
         }
     }

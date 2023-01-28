@@ -19,14 +19,14 @@ public class App implements Callable<Integer> {
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean versionInfoRequested;
     @Parameters(index = "0", description = "path to first file")
-    private String firstFilePatch;
+    private String firstFilePath;
     @Parameters(index = "1", description = "path to second file")
-    private String secondFilePatch;
+    private String secondFilePath;
 
     @Override
     public final Integer call() {
         try {
-            var diff = Differ.generate(firstFilePatch, secondFilePatch, format);
+            var diff = Differ.generate(firstFilePath, secondFilePath, format);
             System.out.println(diff);
             return SUCCESSFUL_EXIT_CODE;
         } catch (Exception e) {

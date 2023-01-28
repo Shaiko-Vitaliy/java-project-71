@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ParserTest {
     private static String firstFilePatchJson;
     private static String firstFilePatchYaml;
-    //private static final Map<String, Object> EXPECTED_MAP_FROM_FIRST_FILE = new HashMap<>();
     private static Map<String, Object> expectedMapFromFirstFile = new HashMap<>();
 
     @BeforeAll
@@ -26,25 +25,6 @@ public class ParserTest {
         ObjectMapper objectMapper = new ObjectMapper();
         expectedMapFromFirstFile = objectMapper.readValue(lineFromFirstFile, new TypeReference<>() {
         });
-/*
-        EXPECTED_MAP_FROM_FIRST_FILE.put("setting1", "Some value");
-        EXPECTED_MAP_FROM_FIRST_FILE.put("setting2", 0);
-        EXPECTED_MAP_FROM_FIRST_FILE.put("setting3", true);
-        EXPECTED_MAP_FROM_FIRST_FILE.put("key1", "value1");
-        EXPECTED_MAP_FROM_FIRST_FILE.put("numbers1", List.of(1, 2, 3, 4));
-        EXPECTED_MAP_FROM_FIRST_FILE.put("numbers2", List.of(2, 3, 4, 5));
-        EXPECTED_MAP_FROM_FIRST_FILE.put("id", 1);
-        EXPECTED_MAP_FROM_FIRST_FILE.put("default", null);
-        EXPECTED_MAP_FROM_FIRST_FILE.put("checked", false);
-        EXPECTED_MAP_FROM_FIRST_FILE.put("numbers3", List.of(3, 4, 5));
-        EXPECTED_MAP_FROM_FIRST_FILE.put("chars1", List.of("a", "b", "c"));
-        EXPECTED_MAP_FROM_FIRST_FILE.put("chars2", List.of("d", "e", "f"));
-        EXPECTED_MAP_FROM_FIRST_FILE.put("obj1", Map.of("nestedKey", "value", "isNested", true));
-
- */
-
-
-
     }
     @Test
     public void parsingFileTest() throws Exception {
@@ -57,6 +37,4 @@ public class ParserTest {
         assertEquals(expectedMapFromFirstFile, actualResultYaml, "Parse.parsingFile() не получилось спарсить"
                 + "строку формата YAML и получить МАР или результат не совпал с ожидаемым");
     }
-
-
 }

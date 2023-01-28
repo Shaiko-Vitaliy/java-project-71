@@ -31,7 +31,7 @@ public class Stylish {
                     case "New value" -> {
                     }
                     default -> {
-                        builder.append("  ").append("not recognized ").append(item.getKey());
+                        throw new IllegalArgumentException("Illegal modifier");
                     }
                 }
             }
