@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -22,26 +23,18 @@ public class Parser {
         }
     }
 
-    private static Map<String, Object> makesFromJsonToMap(String line) throws Exception {
+    private static Map<String, Object> makesFromJsonToMap(String line) throws JsonProcessingException {
         Map<String, Object> map;
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            map = objectMapper.readValue(line, new TypeReference<>() {
-            });
-            return map;
-        } catch (Exception e) {
-            throw new Exception("File is empty");
-        }
+        map = objectMapper.readValue(line, new TypeReference<>() {
+        });
+        return map;
     }
 
-    private static Map<String, Object> makesFromYamlToMap(String line) throws Exception {
+    private static Map<String, Object> makesFromYamlToMap(String line) throws JsonProcessingException {
         Map<String, Object> map;
         ObjectMapper mapper = new YAMLMapper();
-        try {
-            map = mapper.readValue(line, HashMap.class);
-            return map;
-        } catch (Exception e) {
-            throw new Exception("File is empty");
-        }
+        map = mapper.readValue(line, HashMap.class);
+        return map;
     }
 }

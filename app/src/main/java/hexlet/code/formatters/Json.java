@@ -10,10 +10,6 @@ public class Json {
     public static String makeFromJson(Map<String, HashMap<String, Object>> map) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        try {
-            return objectMapper.writeValueAsString(map);
-        } catch (IOException e) {
-            throw new IOException("Error the write data to string json");
-        }
+        return objectMapper.writeValueAsString(map);
     }
 }
