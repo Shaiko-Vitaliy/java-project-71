@@ -24,6 +24,13 @@ public class Differ {
         return Format.getResultInOutFormat(resultCompareMaps, format);
     }
 
+    public static String generate(String firstFilePath, String secondFilePath) throws Exception {
+        //на вход приходит полный путь к двум файлам
+        //перегрузка и перевод к методу generate() вверх
+        return generate(firstFilePath, secondFilePath, "stylish");
+
+    }
+
     private static String givesFormatInputFile(String filePatch) {
         if (!filePatch.contains(".")) {
             return "";
