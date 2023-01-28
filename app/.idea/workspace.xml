@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4560611-90f4-4681-8148-a735d5364f2f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/emptySecond.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/empyFirst.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/car.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Json.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/errorFormat/emptySecond.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/empty1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/errorFormat/empyFirst.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/errorFormat/empty2.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +131,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.app [checkstyleTest]">
+  <component name="RunManager" selected="Gradle.app [checkstyleMain]">
     <configuration name="app [checkstyleMain]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -249,11 +239,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.app [checkstyleTest]" />
         <item itemvalue="Gradle.app [checkstyleMain]" />
         <item itemvalue="Gradle.app [clean]" />
-        <item itemvalue="Gradle.app [test]" />
         <item itemvalue="Gradle.app [installDist]" />
+        <item itemvalue="Gradle.app [checkstyleTest]" />
+        <item itemvalue="Gradle.app [test]" />
       </list>
     </recent_temporary>
   </component>

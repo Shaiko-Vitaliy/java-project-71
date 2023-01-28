@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -19,22 +18,30 @@ public class Parser {
                 map = makesFromYamlToMap(lineFromFile);
                 return map;
             }
-            default -> throw new IllegalArgumentException("Format valid");
+            default -> throw new IllegalArgumentException("Format file not valid");
         }
     }
 
-    private static Map<String, Object> makesFromJsonToMap(String line) throws JsonProcessingException {
+    private static Map<String, Object> makesFromJsonToMap(String line) throws Exception {
         Map<String, Object> map;
         ObjectMapper objectMapper = new ObjectMapper();
-        map = objectMapper.readValue(line, new TypeReference<>() {
-        });
-        return map;
+        try {
+            map = objectMapper.readValue(line, new TypeReference<>() {
+            });
+            return map;
+        } catch (Exception e) {
+            throw new Exception("File is empty");
+        }
     }
 
     private static Map<String, Object> makesFromYamlToMap(String line) throws Exception {
         Map<String, Object> map;
         ObjectMapper mapper = new YAMLMapper();
-        map = mapper.readValue(line, HashMap.class);
-        return map;
+        try {
+            map = mapper.readValue(line, HashMap.class);
+            return map;
+        } catch (Exception e) {
+            throw new Exception("File is empty");
+        }
     }
 }
