@@ -26,17 +26,17 @@ public class ComraratorTest {
         var lineFromSecondFileJson = Files.readString(Paths.get(secondFilePatchJson));
         expectedLineFromFilePatchTxt = Files.readString(Paths.get(expectedFilePatchTxt));
 
-        map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
-        map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
+        map1 = Parser.parse(lineFromFirstFileJson, "json");
+        map2 = Parser.parse(lineFromSecondFileJson, "json");
     }
     @Test
-    public void comparesTwoMapsTest() {
-        var actualCompareMaps = Comparator.comparesTwoMaps(map1, map2);
+    public void compareTest() {
+        var actualCompareMaps = Comparator.compare(map1, map2);
         var scan = new Scanner(expectedLineFromFilePatchTxt);
         for (Map.Entry<String, HashMap<String, Object>> item : actualCompareMaps.entrySet()) {
             assertEquals(scan.nextLine(), item.getKey() + item.getValue(),
                     "Comparator.comparesTwoMaps() вызвал ошибку"
-                    + "или результат не совпал с ожидаемым");
+                            + "или результат не совпал с ожидаемым");
         }
     }
 }

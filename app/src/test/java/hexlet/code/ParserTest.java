@@ -27,11 +27,11 @@ public class ParserTest {
         });
     }
     @Test
-    public void parsingFileTest() throws Exception {
+    public void parseTest() throws Exception {
         var lineFromFirstFile = Files.readString(Paths.get(firstFilePatchJson));
-        Map<String, Object> actualResultJson = Parser.parsingFile(lineFromFirstFile, "json");
+        Map<String, Object> actualResultJson = Parser.parse(lineFromFirstFile, "json");
         var lineFromFirstFileYaml = Files.readString(Paths.get(firstFilePatchYaml));
-        Map<String, Object> actualResultYaml = Parser.parsingFile(lineFromFirstFileYaml, "yml");
+        Map<String, Object> actualResultYaml = Parser.parse(lineFromFirstFileYaml, "yml");
         assertEquals(expectedMapFromFirstFile, actualResultJson, "Parse.parsingFile() не получилось спарсить"
                 + "строку формата JSON и получить МАР или результат не совпал с ожидаемым");
         assertEquals(expectedMapFromFirstFile, actualResultYaml, "Parse.parsingFile() не получилось спарсить"

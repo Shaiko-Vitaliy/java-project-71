@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parsingFile(String lineFromFile, String formatInputFile) throws Exception {
+    public static Map<String, Object> parse(String lineFromFile, String formatInputFile) throws Exception {
         Map<String, Object> map;
         switch (formatInputFile) {
             case "json" -> {
@@ -24,17 +24,13 @@ public class Parser {
     }
 
     private static Map<String, Object> makesFromJsonToMap(String line) throws JsonProcessingException {
-        Map<String, Object> map;
         ObjectMapper objectMapper = new ObjectMapper();
-        map = objectMapper.readValue(line, new TypeReference<>() {
+        return objectMapper.readValue(line, new TypeReference<>() {
         });
-        return map;
     }
 
     private static Map<String, Object> makesFromYamlToMap(String line) throws JsonProcessingException {
-        Map<String, Object> map;
         ObjectMapper mapper = new YAMLMapper();
-        map = mapper.readValue(line, HashMap.class);
-        return map;
+        return mapper.readValue(line, HashMap.class);
     }
 }

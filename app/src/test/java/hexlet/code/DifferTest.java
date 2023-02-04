@@ -35,7 +35,7 @@ class DifferTest {
     public void generateFromJsonTest() throws Exception {
         var actualResult = Differ.generate(firstFilePatchJson, secondFilePatchJson);
         assertEquals(stylishFormatExpected, actualResult, "Differ.generate() не получилось сравнить"
-                 + " два файла JSON и вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
+                + " два файла JSON и вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
 
     }
 

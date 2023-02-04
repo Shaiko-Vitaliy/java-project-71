@@ -2,21 +2,27 @@ package hexlet.code;
 
 import hexlet.code.formatters.Format;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Differ {
     public static String generate(String firstFilePath, String secondFilePath, String format) {
         String result = "{}";
+        var absolutPatchFirst = getFullPath(firstFilePath);
+        var absolutPatchSecond = getFullPath(secondFilePath);
+        Map<String, Object> mapFromFirstFile = new HashMap<>();
+        Map<String, Object> mapFromSecondFile = new HashMap<>();
         try {
-            var absolutPatchFirst = getFullPath(firstFilePath);
-            var absolutPatchSecond = getFullPath(secondFilePath);
-            var mapFromFirstFile = getData(absolutPatchFirst);
-            var mapFromSecondFile = getData(absolutPatchSecond);
-            var resultCompareMaps = Comparator.comparesTwoMaps(mapFromFirstFile, mapFromSecondFile);
-            result = Format.getResultInOutFormat(resultCompareMaps, format);
+            mapFromFirstFile = getData(absolutPatchFirst);
+            mapFromSecondFile = getData(absolutPatchSecond);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+            var resultCompare = Comparator.compare(mapFromFirstFile, mapFromSecondFile);
+        try {
+            result = Format.format(resultCompare, format);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -35,7 +41,7 @@ public class Differ {
         return filePath.substring(indexOfSeparator + 1);
     }
 
-    private static Path getFullPath(String filePath) throws InvalidPathException {
+    private static Path getFullPath(String filePath) {
         return Paths.get(filePath).toAbsolutePath().normalize();
     }
 
@@ -43,6 +49,6 @@ public class Differ {
         String lineFromFile = "";
         lineFromFile = Files.readString(path);
         var formatInputFile = givesFormatInputFile(path.toString());
-        return Parser.parsingFile(lineFromFile, formatInputFile);
+        return Parser.parse(lineFromFile, formatInputFile);
     }
 }

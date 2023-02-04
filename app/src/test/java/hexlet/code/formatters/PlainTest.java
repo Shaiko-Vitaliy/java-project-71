@@ -9,10 +9,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlainTest {
-    private static Map<String, HashMap<String, Object>> map;
+    private static TreeMap<String, HashMap<String, Object>> map;
     private static String expectedPlainTxt;
 
     @BeforeAll
@@ -26,13 +28,13 @@ public class PlainTest {
         var lineFromSecondFileJson = Files.readString(Paths.get(secondFilePatchJson));
         expectedPlainTxt = Files.readString(Paths.get(expectedPlainTxtFormatFilePatchTxt));
 
-        Map<String, Object> map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
-        Map<String, Object> map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        map = Comparator.comparesTwoMaps(map1, map2);
+        Map<String, Object> map1 = Parser.parse(lineFromFirstFileJson, "json");
+        Map<String, Object> map2 = Parser.parse(lineFromSecondFileJson, "json");
+        map = Comparator.compare(map1, map2);
     }
 
     @Test
-    public void makeFromStylishTest() {
+    public void makeFromPlainTest() {
         var actualOutPutPlain = Plain.makeFromPlain(map);
         assertEquals(expectedPlainTxt, actualOutPutPlain, "Plain.makeFromPlain() "
                 + "не получилось вывести результат в формате \"plain\" или результат не совпал с ожидаемым");

@@ -3,13 +3,14 @@ package hexlet.code.formatters;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Plain {
-    public static String makeFromPlain(Map<String, HashMap<String, Object>> map) {
+    public static String makeFromPlain(TreeMap<String, HashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<String, HashMap<String, Object>> item : map.entrySet()) {
             for (Map.Entry<String, Object> key : item.getValue().entrySet()) {
-                var valueOfKey = checksForCompositeData(key.getValue()).toString();
+                var valueOfKey = checksCompositeData(key.getValue()).toString();
                 switch (key.getKey()) {
                     case "added" -> {
                         builder.append("Property '").append(item.getKey()).append("' was added with value: ")
@@ -20,8 +21,8 @@ public class Plain {
                     }
                     case "Old value" -> {
                         builder.append("Property '").append(item.getKey()).append("' was updated. From ")
-                                .append(checksForCompositeData(item.getValue().get("Old value"))).append(" to ")
-                                .append(checksForCompositeData(item.getValue().get("New value"))).append("\n");
+                                .append(checksCompositeData(item.getValue().get("Old value"))).append(" to ")
+                                .append(checksCompositeData(item.getValue().get("New value"))).append("\n");
                     }
                     default -> {
                     }
@@ -32,7 +33,7 @@ public class Plain {
         return builder.toString();
     }
 
-    private static Object checksForCompositeData(Object data) throws NullPointerException {
+    private static Object checksCompositeData(Object data) throws NullPointerException {
         if (data == null) {
             return "null";
         } else if (data instanceof Collection<?> || data instanceof Map<?, ?>) {
@@ -43,4 +44,3 @@ public class Plain {
         return data;
     }
 }
-

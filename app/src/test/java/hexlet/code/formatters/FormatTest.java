@@ -10,10 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.TreeMap;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FormatTest {
-    private static Map<String, HashMap<String, Object>> map;
+    private static TreeMap<String, HashMap<String, Object>> map;
     private static String expectedStylishTxt;
     private static String expectedPlainTxt;
     private static String expectedJsonTxt;
@@ -34,19 +36,19 @@ public class FormatTest {
         expectedPlainTxt = Files.readString(Paths.get(expectedPlainTxtFormatFilePatchTxt));
         expectedJsonTxt = Files.readString(Paths.get(expectedJsonTxtFormatFilePatchTxt));
 
-        var map1 = Parser.parsingFile(lineFromFirstFileJson, "json");
-        var map2 = Parser.parsingFile(lineFromSecondFileJson, "json");
-        map = Comparator.comparesTwoMaps(map1, map2);
+        var map1 = Parser.parse(lineFromFirstFileJson, "json");
+        var map2 = Parser.parse(lineFromSecondFileJson, "json");
+        map = Comparator.compare(map1, map2);
     }
 
     @Test
-    public void getResultInOutFormatTest() throws IOException {
+    public void formatTest() throws IOException {
         var formatStylish = "stylish";
         var formatPlain = "plain";
         var formatJson = "json";
-        var actualOutPutStylish = Format.getResultInOutFormat(map, formatStylish);
-        var actualOutPutPlain = Format.getResultInOutFormat(map, formatPlain);
-        var actualOutPutJson = Format.getResultInOutFormat(map, formatJson);
+        var actualOutPutStylish = Format.format(map, formatStylish);
+        var actualOutPutPlain = Format.format(map, formatPlain);
+        var actualOutPutJson = Format.format(map, formatJson);
         assertEquals(expectedStylishTxt, actualOutPutStylish, "Format.getResultInOutFormat() "
                 + "не получилось вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
         assertEquals(expectedPlainTxt, actualOutPutPlain, "Format.getResultInOutFormat() "
