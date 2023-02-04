@@ -20,7 +20,7 @@ public class Differ {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-            var resultCompare = Comparator.compare(mapFromFirstFile, mapFromSecondFile);
+        var resultCompare = Comparator.compare(mapFromFirstFile, mapFromSecondFile);
         try {
             result = Format.format(resultCompare, format);
         } catch (Exception e) {
