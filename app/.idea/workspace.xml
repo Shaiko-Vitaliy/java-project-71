@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4560611-90f4-4681-8148-a735d5364f2f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Comparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Differ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Plain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Plain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Stylish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ComraratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/DifferTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/FormatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/JsonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/PlainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hexlet/code/formatters/StylishTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="e4560611-90f4-4681-8148-a735d5364f2f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -263,6 +245,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/hexlet/code/formatters/Format.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
