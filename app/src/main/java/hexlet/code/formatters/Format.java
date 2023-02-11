@@ -9,13 +9,13 @@ public class Format {
             throws IOException {
         switch (format) {
             case "stylish" -> {
-                return Stylish.makeFromStylish(map);
+                return Stylish.makeStylish(map);
             }
             case "plain" -> {
-                return Plain.makeFromPlain(map);
+                return Plain.makePlain(map);
             }
             case "json" -> {
-                return Json.makeFromJson(map);
+                return Json.makeJson(map);
             }
             default -> {
                 throw new IllegalArgumentException("Out format not valid");

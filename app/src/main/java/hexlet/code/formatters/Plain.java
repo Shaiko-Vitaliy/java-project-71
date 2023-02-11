@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Plain {
-    public static String makeFromPlain(TreeMap<String, HashMap<String, Object>> map) {
+    public static String makePlain(TreeMap<String, HashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<String, HashMap<String, Object>> item : map.entrySet()) {
             for (Map.Entry<String, Object> key : item.getValue().entrySet()) {

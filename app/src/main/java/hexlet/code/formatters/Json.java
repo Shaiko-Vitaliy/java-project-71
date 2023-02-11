@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.TreeMap;
 
 public class Json {
-    public static String makeFromJson(TreeMap<String, HashMap<String, Object>> map) throws IOException {
+    public static String makeJson(TreeMap<String, HashMap<String, Object>> map) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         return objectMapper.writeValueAsString(map);

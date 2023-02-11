@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Stylish {
-    public static String makeFromStylish(TreeMap<String, HashMap<String, Object>> map) {
+    public static String makeStylish(TreeMap<String, HashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         builder.append("{\n");
         for (Map.Entry<String, HashMap<String, Object>> item : map.entrySet()) {
