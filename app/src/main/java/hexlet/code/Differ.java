@@ -10,17 +10,17 @@ import java.util.Map;
 public class Differ {
     public static String generate(String firstFilePath, String secondFilePath, String format) {
         String result = "{}";
-        var absolutPatchFirst = getFullPath(firstFilePath);
-        var absolutPatchSecond = getFullPath(secondFilePath);
-        Map<String, Object> mapFromFirstFile = new HashMap<>();
-        Map<String, Object> mapFromSecondFile = new HashMap<>();
+        var absolutPathFirst = getFullPath(firstFilePath);
+        var absolutPathSecond = getFullPath(secondFilePath);
+        Map<String, Object> dataFromFirstFile = new HashMap<>(); //инициализируем из за try catch
+        Map<String, Object> dataFromSecondFile = new HashMap<>(); //инициализируем из за try catch
         try {
-            mapFromFirstFile = getData(absolutPatchFirst);
-            mapFromSecondFile = getData(absolutPatchSecond);
+            dataFromFirstFile = getData(absolutPathFirst);
+            dataFromSecondFile = getData(absolutPathSecond);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        var resultCompare = Comparator.compare(mapFromFirstFile, mapFromSecondFile);
+        var resultCompare = Comparator.findDiff(dataFromFirstFile, dataFromSecondFile);
         try {
             result = Format.format(resultCompare, format);
         } catch (Exception e) {
@@ -33,7 +33,7 @@ public class Differ {
         return generate(firstFilePath, secondFilePath, "stylish");
     }
 
-    private static String givesFormatInputFile(String filePath) {
+    private static String giveFormatInputFile(String filePath) {
         if (!filePath.contains(".")) {
             return "";
         }
@@ -48,7 +48,7 @@ public class Differ {
     private static Map<String, Object> getData(Path path) throws Exception {
         String lineFromFile = "";
         lineFromFile = Files.readString(path);
-        var formatInputFile = givesFormatInputFile(path.toString());
+        var formatInputFile = giveFormatInputFile(path.toString());
         return Parser.parse(lineFromFile, formatInputFile);
     }
 }

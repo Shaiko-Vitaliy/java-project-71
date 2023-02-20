@@ -1,11 +1,11 @@
 package hexlet.code.formatters;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
 public class Format {
-    public static String format(TreeMap<String, HashMap<String, Object>> map, String format)
+    public static String format(TreeMap<String, LinkedHashMap<String, Object>> map, String format)
             throws IOException {
         switch (format) {
             case "stylish" -> {

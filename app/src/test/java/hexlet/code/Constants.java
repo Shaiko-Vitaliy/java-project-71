@@ -3,7 +3,7 @@ package hexlet.code;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -27,7 +27,7 @@ public class Constants {
     public static final String EXPECTED_STYLISH;
     public static final String EXPECTED_PLAIN;
     public static final String EXPECTED_JSON;
-    public static final TreeMap<String, HashMap<String, Object>> TREE_MAP;
+    public static final TreeMap<String, LinkedHashMap<String, Object>> TREE_MAP;
     public static final Map<String, Object> FIRST_MAP;
     public static final Map<String, Object> SECOND_MAP;
 
@@ -44,6 +44,6 @@ public class Constants {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        TREE_MAP = Comparator.compare(FIRST_MAP, SECOND_MAP);
+        TREE_MAP = Comparator.findDiff(FIRST_MAP, SECOND_MAP);
     }
 }

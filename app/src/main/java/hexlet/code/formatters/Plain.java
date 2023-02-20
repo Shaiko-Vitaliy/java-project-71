@@ -1,31 +1,38 @@
 package hexlet.code.formatters;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Plain {
-    public static String makePlain(TreeMap<String, HashMap<String, Object>> map) {
+    public static String makePlain(TreeMap<String, LinkedHashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
-        for (Map.Entry<String, HashMap<String, Object>> item : map.entrySet()) {
-            for (Map.Entry<String, Object> key : item.getValue().entrySet()) {
-                var valueOfKey = checksCompositeData(key.getValue()).toString();
-                switch (key.getKey()) {
-                    case "added" -> {
-                        builder.append("Property '").append(item.getKey()).append("' was added with value: ")
-                                .append(valueOfKey).append("\n");
-                    }
-                    case "delete" -> {
-                        builder.append("Property '").append(item.getKey()).append("' was removed").append("\n");
-                    }
-                    case "Old value" -> {
-                        builder.append("Property '").append(item.getKey()).append("' was updated. From ")
-                                .append(checksCompositeData(item.getValue().get("Old value"))).append(" to ")
-                                .append(checksCompositeData(item.getValue().get("New value"))).append("\n");
-                    }
-                    default -> {
-                    }
+        for (Map.Entry<String, LinkedHashMap<String, Object>> item : map.entrySet()) {
+            var command = item.getValue().get("type").toString();
+            switch (command) {
+                case "added" -> {
+                    var value = item.getValue().get("value");
+                    var valueCheckComposite = checkCompositeData(value).toString();
+                    builder.append("Property '").append(item.getKey()).append("' was added with value: ")
+                            .append(valueCheckComposite).append("\n");
+                }
+                case "deleted" -> {
+                    builder.append("Property '").append(item.getKey()).append("' was removed").append("\n");
+                }
+                case "changed" -> {
+                    var value1 = item.getValue().get("value1");
+                    var value2 = item.getValue().get("value2");
+                    var valueCheckComposite1 = checkCompositeData(value1).toString();
+                    var valueCheckComposite2 = checkCompositeData(value2).toString();
+                    builder.append("Property '").append(item.getKey()).append("' was updated. From ")
+                            .append(valueCheckComposite1).append(" to ")
+                            .append(valueCheckComposite2).append("\n");
+                }
+                case "unchanged" -> {
+                }
+                default -> {
+                    throw new IllegalArgumentException("Illegal modifier");
                 }
             }
         }
@@ -33,7 +40,7 @@ public class Plain {
         return builder.toString();
     }
 
-    private static Object checksCompositeData(Object data) throws NullPointerException {
+    private static Object checkCompositeData(Object data) throws NullPointerException {
         if (data == null) {
             return "null";
         } else if (data instanceof Collection<?> || data instanceof Map<?, ?>) {
