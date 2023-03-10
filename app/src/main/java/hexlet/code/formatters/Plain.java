@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Plain {
-    public static String makePlain(TreeMap<String, LinkedHashMap<String, Object>> map) {
+    public static String format(TreeMap<String, LinkedHashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<String, LinkedHashMap<String, Object>> item : map.entrySet()) {
             var command = item.getValue().get("type").toString();
@@ -40,7 +40,7 @@ public class Plain {
         return builder.toString();
     }
 
-    private static Object checkCompositeData(Object data) throws NullPointerException {
+    private static Object checkCompositeData(Object data) {
         if (data == null) {
             return "null";
         } else if (data instanceof Collection<?> || data instanceof Map<?, ?>) {

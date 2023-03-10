@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 public class FormatTest {
     @Test
     public void formatTest() throws IOException {
-        var actualOutPutStylish = Format.format(Constants.TREE_MAP, Constants.FORMAT_STYLISH);
-        var actualOutPutPlain = Format.format(Constants.TREE_MAP, Constants.FORMAT_PLAIN);
-        var actualOutPutJson = Format.format(Constants.TREE_MAP, Constants.FORMAT_JSON);
+        var actualOutPutStylish = Formatter.format(Constants.TREE_MAP, Constants.FORMAT_STYLISH);
+        var actualOutPutPlain = Formatter.format(Constants.TREE_MAP, Constants.FORMAT_PLAIN);
+        var actualOutPutJson = Formatter.format(Constants.TREE_MAP, Constants.FORMAT_JSON);
         assertEquals(Constants.EXPECTED_STYLISH, actualOutPutStylish, "Format.format() "
                 + "не получилось вывести результат в формате \"stylish\" или результат не совпал с ожидаемым");
         assertEquals(Constants.EXPECTED_PLAIN, actualOutPutPlain, "Format.format() "

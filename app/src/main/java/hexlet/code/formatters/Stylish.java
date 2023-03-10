@@ -5,10 +5,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Stylish {
-    public static String makeStylish(TreeMap<String, LinkedHashMap<String, Object>> map) {
+    public static String format(TreeMap<String, LinkedHashMap<String, Object>> map) {
         StringBuilder builder = new StringBuilder();
         builder.append("{\n");
-
         for (Map.Entry<String, LinkedHashMap<String, Object>> item : map.entrySet()) {
             var command = item.getValue().get("type").toString();
             switch (command) {

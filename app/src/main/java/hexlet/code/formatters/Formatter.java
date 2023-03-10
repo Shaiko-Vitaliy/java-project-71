@@ -1,21 +1,19 @@
 package hexlet.code.formatters;
 
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-public class Format {
-    public static String format(TreeMap<String, LinkedHashMap<String, Object>> map, String format)
-            throws IOException {
+public class Formatter {
+    public static String format(TreeMap<String, LinkedHashMap<String, Object>> map, String format) {
         switch (format) {
             case "stylish" -> {
-                return Stylish.makeStylish(map);
+                return Stylish.format(map);
             }
             case "plain" -> {
-                return Plain.makePlain(map);
+                return Plain.format(map);
             }
             case "json" -> {
-                return Json.makeJson(map);
+                return Json.format(map);
             }
             default -> {
                 throw new IllegalArgumentException("Out format not valid");

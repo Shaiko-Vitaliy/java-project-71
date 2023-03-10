@@ -8,7 +8,7 @@ public class PlainTest {
 
     @Test
     public void makePlainTest() {
-        var actualOutPutPlain = Plain.makePlain(Constants.TREE_MAP);
+        var actualOutPutPlain = Plain.format(Constants.TREE_MAP);
         assertEquals(Constants.EXPECTED_PLAIN, actualOutPutPlain, "Plain.makePlain() "
                 + "не получилось вывести результат в формате \"plain\" или результат не совпал с ожидаемым");
     }

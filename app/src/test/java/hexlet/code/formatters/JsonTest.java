@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JsonTest {
     @Test
     public void makeJsonTest() throws IOException {
-        var actualOutPutJson = Json.makeJson(Constants.TREE_MAP);
+        var actualOutPutJson = Json.format(Constants.TREE_MAP);
         assertEquals(Constants.EXPECTED_JSON, actualOutPutJson, "Json.makeJson() "
                 + "не получилось вывести результат в формате \"json\" или результат не совпал с ожидаемым");
     }
