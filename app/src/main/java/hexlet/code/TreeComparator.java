@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
-public class Comparator {
+public class TreeComparator {
     private static final  String ADDED = "added";
     private static final  String DELETED = "deleted";
     private static final String CHANGED = "changed";

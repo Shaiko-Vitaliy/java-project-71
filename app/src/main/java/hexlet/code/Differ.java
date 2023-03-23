@@ -6,15 +6,23 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Differ {
     public static String generate(String firstFilePath, String secondFilePath, String format) {
         var pathFirst = getFullPath(firstFilePath);
         var pathSecond = getFullPath(secondFilePath);
-        var dataFromFirstFile = getData(pathFirst);
-        var dataFromSecondFile = getData(pathSecond);
-        var resultCompare = Comparator.findDiff(dataFromFirstFile, dataFromSecondFile);
+        Map<String, Object> dataFromFirstFile = new HashMap<>();
+        Map<String, Object> dataFromSecondFile = new HashMap<>();
+        try {
+            dataFromFirstFile = getData(pathFirst);
+            dataFromSecondFile = getData(pathSecond);
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+
+        var resultCompare = TreeComparator.findDiff(dataFromFirstFile, dataFromSecondFile);
         return Formatter.format(resultCompare, format);
     }
 
@@ -34,13 +42,8 @@ public class Differ {
         return Paths.get(filePath).toAbsolutePath().normalize();
     }
 
-    private static Map<String, Object> getData(Path path) {
-        var fileContent = "";
-        try {
-            fileContent = Files.readString(path);
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
+    private static Map<String, Object> getData(Path path) throws IOException {
+        var fileContent = Files.readString(path);
         var format = getFormat(path.toString());
         return Parser.parse(fileContent, format);
     }

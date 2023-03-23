@@ -1,15 +1,12 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parse(String fileContent, String format) {
+    public static Map<String, Object> parse(String fileContent, String format) throws IOException {
         Map<String, Object> map;
         switch (format) {
             case "json" -> {
@@ -24,27 +21,13 @@ public class Parser {
         }
     }
 
-    private static Map<String, Object> parseJson(String fileContent) {
-        ObjectMapper objectMapper = new JsonMapper();
-        Map<String, Object> result = new HashMap<>();
-        try {
-            result = objectMapper.readValue(fileContent, new TypeReference<>() {
-            });
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
-        return result;
+    private static Map parseJson(String fileContent) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(fileContent, Map.class);
     }
 
-    private static Map<String, Object> parseYaml(String fileContent) {
-        ObjectMapper mapper = new YAMLMapper();
-        Map<String, Object> result = new HashMap<>();
-        try {
-            result = mapper.readValue(fileContent, new TypeReference<>() {
-            });
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
-        return result;
+    private static Map parseYaml(String fileContent) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+        return objectMapper.readValue(fileContent, Map.class);
     }
 }

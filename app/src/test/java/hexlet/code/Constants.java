@@ -44,6 +44,6 @@ public class Constants {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        TREE_MAP = Comparator.findDiff(FIRST_MAP, SECOND_MAP);
+        TREE_MAP = TreeComparator.findDiff(FIRST_MAP, SECOND_MAP);
     }
 }

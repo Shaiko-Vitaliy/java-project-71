@@ -19,7 +19,7 @@ public class ComparatorTest {
     }
     @Test
     public void findDiffTest() {
-        var actualCompareMaps = Comparator.findDiff(Constants.FIRST_MAP, Constants.SECOND_MAP);
+        var actualCompareMaps = TreeComparator.findDiff(Constants.FIRST_MAP, Constants.SECOND_MAP);
         var scan = new Scanner(expectedResultCompare);
         for (Map.Entry<String, LinkedHashMap<String, Object>> item : actualCompareMaps.entrySet()) {
             assertEquals(scan.nextLine(), item.getKey() + "=" + item.getValue(),
