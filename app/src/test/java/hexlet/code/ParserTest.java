@@ -14,13 +14,13 @@ public class ParserTest {
     @BeforeAll
     public static void beforeAll() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        expectedMapFromFirstFile = objectMapper.readValue(Constants.LINE_FROM_FIRST_FILE_JSON, new TypeReference<>() {
+        expectedMapFromFirstFile = objectMapper.readValue(FilePaths.LINE_FROM_FIRST_FILE_JSON, new TypeReference<>() {
         });
     }
     @Test
     public void parseTest() throws Exception {
-        Map<String, Object> actualResultJson = Parser.parse(Constants.LINE_FROM_FIRST_FILE_JSON, "json");
-        Map<String, Object> actualResultYaml = Parser.parse(Constants.LINE_FROM_FIRST_FILE_YAML, "yml");
+        Map<String, Object> actualResultJson = Parser.parse(FilePaths.LINE_FROM_FIRST_FILE_JSON, "json");
+        Map<String, Object> actualResultYaml = Parser.parse(FilePaths.LINE_FROM_FIRST_FILE_YAML, "yml");
         assertEquals(expectedMapFromFirstFile, actualResultJson, "Parse.parsingFile() не получилось спарсить"
                 + "строку формата JSON и получить МАР или результат не совпал с ожидаемым");
         assertEquals(expectedMapFromFirstFile, actualResultYaml, "Parse.parsingFile() не получилось спарсить"

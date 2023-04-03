@@ -9,12 +9,13 @@ import java.util.TreeMap;
 public class Json {
     public static String format(TreeMap<String, LinkedHashMap<String, Object>> map) {
         ObjectMapper objectMapper = new ObjectMapper();
-        var result = "";
+        String result;
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         try {
             result = objectMapper.writeValueAsString(map);
         } catch (JsonProcessingException e) {
-            System.out.println(e.toString());
+            System.err.println(e.toString());
+            throw new RuntimeException();
         }
         return result;
     }

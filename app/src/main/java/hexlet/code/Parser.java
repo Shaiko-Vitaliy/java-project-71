@@ -5,8 +5,9 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.IOException;
 import java.util.Map;
 
+
 public class Parser {
-    public static Map<String, Object> parse(String fileContent, String format) throws IOException {
+    public static Map<String, Object> parse(String fileContent, String format) {
         Map<String, Object> map;
         switch (format) {
             case "json" -> {
@@ -21,13 +22,27 @@ public class Parser {
         }
     }
 
-    private static Map parseJson(String fileContent) throws IOException {
+    private static Map<String, Object> parseJson(String fileContent) {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(fileContent, Map.class);
+        Map<String, Object> result;
+        try {
+            result = objectMapper.readValue(fileContent, Map.class);
+        } catch (IOException e) {
+            System.err.println(e.toString());
+            throw new RuntimeException(e.toString());
+        }
+        return result;
     }
 
-    private static Map parseYaml(String fileContent) throws IOException {
+    private static Map parseYaml(String fileContent) {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-        return objectMapper.readValue(fileContent, Map.class);
+        Map<String, Object> result;
+        try {
+            result = objectMapper.readValue(fileContent, Map.class);
+        } catch (IOException e) {
+            System.err.println(e.toString());
+            throw new RuntimeException(e.toString());
+        }
+        return result;
     }
 }

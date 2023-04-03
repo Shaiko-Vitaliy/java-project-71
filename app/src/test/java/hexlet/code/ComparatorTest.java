@@ -14,12 +14,12 @@ public class ComparatorTest {
 
     @BeforeAll
     public static void beforeAll() throws Exception {
-        var lineFromFilePatch = Constants.RESOURCES_PATCH + "/resultComparatorExpected.txt";
+        var lineFromFilePatch = FilePaths.RESOURCES_PATCH + "/resultComparatorExpected.txt";
         expectedResultCompare = Files.readString(Paths.get(lineFromFilePatch));
     }
     @Test
     public void findDiffTest() {
-        var actualCompareMaps = TreeComparator.findDiff(Constants.FIRST_MAP, Constants.SECOND_MAP);
+        var actualCompareMaps = TreeComparator.findDiff(FilePaths.FIRST_MAP, FilePaths.SECOND_MAP);
         var scan = new Scanner(expectedResultCompare);
         for (Map.Entry<String, LinkedHashMap<String, Object>> item : actualCompareMaps.entrySet()) {
             assertEquals(scan.nextLine(), item.getKey() + "=" + item.getValue(),

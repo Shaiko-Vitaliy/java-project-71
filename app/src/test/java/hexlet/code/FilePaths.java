@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Constants {
+public class FilePaths {
     public static final String FORMAT_STYLISH = "stylish";
     public static final String FORMAT_PLAIN = "plain";
     public static final String FORMAT_JSON = "json";
@@ -39,8 +39,8 @@ public class Constants {
             EXPECTED_STYLISH = Files.readString(Paths.get(EXPECTED_STYLISH_PATCH));
             EXPECTED_PLAIN = Files.readString(Paths.get(EXPECTED_PLAIN_PATCH));
             EXPECTED_JSON = Files.readString(Paths.get(EXPECTED_JSON_PATCH));
-            FIRST_MAP = Parser.parse(Constants.LINE_FROM_FIRST_FILE_JSON, "json");
-            SECOND_MAP = Parser.parse(Constants.LINE_FROM_SECOND_FILE_JSON, "json");
+            FIRST_MAP = Parser.parse(FilePaths.LINE_FROM_FIRST_FILE_JSON, "json");
+            SECOND_MAP = Parser.parse(FilePaths.LINE_FROM_SECOND_FILE_JSON, "json");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
