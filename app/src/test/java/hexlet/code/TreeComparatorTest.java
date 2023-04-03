@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ComparatorTest {
+public class TreeComparatorTest {
     private static String expectedResultCompare;
 
     @BeforeAll
