@@ -24,21 +24,23 @@ public class TreeComparator {
                 value.put("type", DELETED);
                 value.put("value", valueMap1);
                 result.put(item.getKey(), value);
-            } else if (!map1.containsKey(item.getKey())) {
+                continue;
+            }
+            if (!map1.containsKey(item.getKey())) {
                 value.put("type", ADDED);
                 value.put("value", valueMap2);
                 result.put(item.getKey(), value);
+                continue;
+            }
+            if (Objects.equals(valueMap1, valueMap2)) {
+                value.put("type", UNCHANGED);
+                value.put("value", item.getValue());
+                result.put(item.getKey(), value);
             } else {
-                if (Objects.equals(valueMap1, valueMap2)) {
-                    value.put("type", UNCHANGED);
-                    value.put("value", item.getValue());
-                    result.put(item.getKey(), value);
-                } else {
-                    value.put("type", CHANGED);
-                    value.put("value1", valueMap1);
-                    value.put("value2", valueMap2);
-                    result.put(item.getKey(), value);
-                }
+                value.put("type", CHANGED);
+                value.put("value1", valueMap1);
+                value.put("value2", valueMap2);
+                result.put(item.getKey(), value);
             }
         }
         return result;
